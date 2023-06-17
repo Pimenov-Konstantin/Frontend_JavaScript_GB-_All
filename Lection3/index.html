@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .heading {
+            color: white;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content"></div>
+    <script>
+        const content = document.querySelector('.content'); //Ловим класс контент
+        const h1Element = document.createElement('h1'); //Создаем h1
+
+        h1Element.textContent = 'H1 Element'; //Добавляем текст для h1
+        h1Element.style.backgroundColor = '#ccc'; //Добавим цвет
+        h1Element.style.textAlign = 'center'; //Сделаем текс по центру
+        h1Element.setAttribute('class', 'heading'); //Выставляем значение атрибута (сначала название атрибута(класс), потом название класса)
+
+        const imgElement = document.createElement('img'); //Создаем изображение
+        imgElement.src = 'photo.img';
+        imgElement.setAttribute('alt', 'good photo'); //Добавили alt подпись к изображению
+
+        content.appendChild(imgElement);
+        content.appendChild(h1Element); //Добавляем дочерний элемент
+    </script>
+</body>
+
+</html>
