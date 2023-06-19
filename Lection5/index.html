@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Task 1 -->
+    <!-- можно так -->
+    <!-- <button onclick="console.log('hello click html')" class="button">GoGoGO</button>
+    <div onclick="console.log('hello click html')" class="button">GoGoGO</div> -->
+    <!-- и можно так -->
+    <button class="button">GoGoGO</button>
+    <!-- добавим несколько кнопок -->
+    <button class="button">hello</button>
+    <button class="button">world</button>
+    <button class="mouse">Mouse</button>
+
+    <!--Task 2 добавим список и рассмотрим делегирование -->
+    <ul class="menu">
+        <li>list-1</li>
+        <li>list-2</li>
+        <li>list-3</li>
+    </ul>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nam, doloribus?</p>
+
+    <input type="text">
+
+    <script>
+        // Task 1
+        const buttonElement = document.querySelector('.button');
+        let count = 0;
+
+        buttonElement.onclick = function() {
+                console.log('click js');
+                count++;
+                console.log(`Кликов по кнопке ${count}`);
+            }
+            // или так метод addEventListener
+        buttonElement.addEventListener('click', function(e) {
+            console.log('click add');
+        });
+        // или так 
+        // buttonElement.addEventListener('click', click);
+
+        // просмотр событий
+        buttonElement.addEventListener('click', function(event) {
+            console.log(event);
+        });
+
+        // еще способ с добавлением множества кнопок делегирование событий
+        const buttonElementAll = document.querySelectorAll('.button');
+        buttonElementAll.forEach(element => {
+            element.addEventListener('click', function(event) {
+                const target = event.target;
+                console.log(target);
+            });
+        });
+
+        // Task 2
+        const menuEl = document.querySelector('.menu');
+
+        const nameFunction = (e) => {
+            console.log(e.target, e.currentTarget);
+        }
+
+        menuEl.addEventListener('click', nameFunction);
+
+        // пример с наведение на кнопку mouseover - когда наводишь; mouseleave - когда убираешь курсор
+        const mouseEl = document.querySelector('.mouse');
+
+        mouseEl.addEventListener('mouseover', function(e) {
+            console.log('не нужно наводить лучше нажми');
+        });
+
+        // ловит нажатие на клавиатуру keydown
+        window.addEventListener('keydown', function(e) {
+            console.log(e.key); // если просто е то ловит нажатие одной кнопки
+        });
+
+        //preventDefault останавливает события
+
+        // копирование элементов
+        document.addEventListener('copy', function(e) {
+            const copyText = document.getSelection().toString();
+            console.log(copyText);
+        });
+
+        // отслеживает изменения значения окна
+        window.addEventListener('resize', (e) => {
+            console.log('resize');
+        });
+
+        // input
+        const inputEl = document.querySelector('input');
+        inputEl.addEventListener('input', (event) => {
+            console.log(event.target.value);
+        });
+    </script>
+</body>
+
+</html>
