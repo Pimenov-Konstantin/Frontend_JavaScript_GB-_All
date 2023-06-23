@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class="content"></div>
+    <script src="../Seminar10/data.js"></script>
+
+    <script>
+        const data = JSON.parse(dataInfo);
+        console.log(data);
+
+        const content = document.querySelector('.content');
+
+        data.forEach(element => {
+            const heading2 = document.createElement('h2');
+            heading2.textContent = element.location;
+            content.append(heading2);
+        });
+    </script>
+
+</body>
+
+</html>
